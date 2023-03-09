@@ -2,14 +2,48 @@
 @fontDoTitulo: Lobster, cursive; 
 @corDoTexto: #fff;
 @bgBody: #eb3b5a;
+@corTextoBotao: #000;
+@corFundoBotao: #f7b731;
 
 body {
     background-color: @bgBody;
     font-family: @fontPrincipal;
     color: @corDoTexto;
-    font-size: 3em;
 }
 
 h1 {
     font-family: @fontDoTitulo;
+    font-size: 3em;
+}
+
+main {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 2em;
+    text-align: center;
+}
+
+button {
+    padding: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-top: 36px;
+    border-radius: 8px;
+    background-color: @corFundoBotao;
+    color: @corTextoBotao;
+    font-family: @fontPrincipal;
+}
+
+input {
+    display: block;
+    margin: 16px auto 0;
+    font-size: 2em;
+    max-width: 120px;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+    color: @corDoTexto;
+    border-bottom: 6px solid @corDoTexto;
 }
