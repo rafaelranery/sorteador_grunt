@@ -28,6 +28,9 @@ module.exports = function(grunt) {
                     'main2.css':'main.scss'
                 }
             } 
+        },
+        concurrent: {
+            target: ['olaGrunt', 'tarefaDemorada','less', 'sass']
         }
     })
     
@@ -40,11 +43,20 @@ module.exports = function(grunt) {
             done();
         }, 3000);
     });
+    grunt.registerTask('tarefaDemorada', function(){
+        const done =this.async();
+        /* Simulação de função assíncrona */
+        setTimeout(() => {
+            console.log('olá grunt')
+            done();
+        }, 8000);
+    });
 
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-concurrent');
 
 
     /* Função default */
-    grunt.registerTask('default', ['less', 'sass']);
+    grunt.registerTask('default', ['concurrent']);
 }
