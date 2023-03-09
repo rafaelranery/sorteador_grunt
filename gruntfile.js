@@ -6,57 +6,29 @@ module.exports = function(grunt) {
             development: {
                 files: {
                     /* arquivo destino */
-                    'main.css':'main.less'
+                    'dev/styles/main.css':'src/styles/main.less'
                 }
             },
+            /* Configurando para ser executado apenas para cliente/ ambiente remoto */
             production: {
                 options: {
                     compress: true,
-
                 },
                 files: {
-                    'main.min.css':'main.less'
+                    'dist/styles/main.min.css':'src/styles/main.less'
                 }
             }
-        },
-        sass: {
-            dist: {
-                options: {
-                    style: 'compressed'
-                },
-                files: {
-                    'main2.css':'main.scss'
-                }
-            } 
-        },
-        concurrent: {
-            target: ['olaGrunt', 'tarefaDemorada','less', 'sass']
         }
     })
     
-    /* Função para adição de tarefas */
-    grunt.registerTask('olaGrunt', function(){
-        const done =this.async();
-        /* Simulação de função assíncrona */
-        setTimeout(() => {
-            console.log('olá grunt')
-            done();
-        }, 3000);
-    });
-    grunt.registerTask('tarefaDemorada', function(){
-        const done =this.async();
-        /* Simulação de função assíncrona */
-        setTimeout(() => {
-            console.log('olá grunt')
-            done();
-        }, 8000);
-    });
+
 
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-concurrent');
 
 
     /* Função default */
-    grunt.registerTask('default', ['concurrent']);
+    grunt.registerTask('default', ['less:development']);
+    grunt.registerTask('build', ['less:production']);
+
 }
